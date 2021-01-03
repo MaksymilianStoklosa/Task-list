@@ -1,0 +1,43 @@
+.sidebar {
+  width: 150px;
+  height: 100vh;
+  position: fixed;
+  background-color: $color-black--primary;
+  color: $color-white--secodnary;
+  display: grid;
+  grid-template-rows: .5fr 1fr;
+
+  &__heading {
+    margin-top: 25px;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    li {
+      list-style: none;
+      margin: 20px -10px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-white--secodnary;
+    text-transform: uppercase;
+    border-left: 5px solid $color-black--primary;
+    padding: 0 10px;
+
+    &:hover {
+      border-color: $color-white--secodnary;
+    }
+  }
+
+  .active {
+    color: $color-gold;
+    border-color: $color-gold;
+  }
+}
