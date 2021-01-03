@@ -1,7 +1,10 @@
 import React from 'react';
+import MainTemplate from 'templates/MainTemplate';
 
 const ActivePage = () => (
-  <h1>Active Page</h1>
+  <MainTemplate>
+    <h1>Active Page</h1>
+  </MainTemplate>
 );
 
 export default ActivePage;
