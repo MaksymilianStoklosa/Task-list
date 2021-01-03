@@ -1,0 +1,10 @@
+@import './config/config';
+@import './templates//templates';
+@import './pages/pages';
+@import './componenets/componenets';
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
