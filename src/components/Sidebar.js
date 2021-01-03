@@ -2,13 +2,35 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => (
-  <aside>
-    <h1>Task list</h1>
-    <nav>
+  <aside className="sidebar">
+    <h1 className="sidebar__heading">Task list</h1>
+    <nav className="sidebar__navigation">
       <ul>
-        <NavLink exact to="/">active</NavLink>
-        <NavLink to="/completed">completed</NavLink>
-        <NavLink to="/search">search</NavLink>
+        <li>
+          <NavLink
+            className="sidebar__link"
+            exact
+            to="/"
+          >
+            active
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className="sidebar__link"
+            to="/completed"
+          >
+            completed
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className="sidebar__link"
+            to="/search"
+          >
+            search
+          </NavLink>
+        </li>
       </ul>
     </nav>
   </aside>
