@@ -1,0 +1,10 @@
+.maintemplate {
+  width: 100%;
+  min-height: 100%;
+
+  &__child {
+    position: absolute;
+    right: 0;
+    width: calc(100% - 150px);
+  }
+}
