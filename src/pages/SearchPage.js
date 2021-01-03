@@ -5,8 +5,8 @@ import Header from 'components/Header';
 const SearchPage = () => (
   <MainTemplate>
     <Header
-      heading="Search"
-      description="You have total: (0) tasks"
+      heading="What you looking for?"
+      description="You have total (0) tasks"
     />
   </MainTemplate>
 );
