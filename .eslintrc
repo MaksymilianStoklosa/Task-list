@@ -11,7 +11,8 @@
     "linebreak-style": 0,
     "react/button-has-type": "off",
     "import/prefer-default-export": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "jsx-a11y/label-has-associated-control": "off"
   },
   "settings": {
     "import/resolver": {
