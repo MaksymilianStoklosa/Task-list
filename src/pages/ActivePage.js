@@ -36,7 +36,7 @@ const ActivePage = () => {
       {!openForm ? (
         <Button
           click={toggleForm}
-          classname="open-form-button"
+          classname="activepage__button"
         >
           <i className="fas fa-plus" />
         </Button>
