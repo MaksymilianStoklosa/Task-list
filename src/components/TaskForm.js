@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { AppContext } from 'context/AppContext';
+import Button from 'components/Button';
 
 const TaskForm = ({ toggleForm }) => {
   const { tasks, setTasks } = useContext(AppContext);
@@ -54,14 +55,14 @@ const TaskForm = ({ toggleForm }) => {
           />
           Priority
         </label>
-        <button className="form__button--submit">Submit</button>
+        <Button classname="form__button--submit">Submit</Button>
       </form>
-      <button
-        className="form__button--exit"
-        onClick={toggleForm}
+      <Button
+        classname="form__button--exit"
+        click={toggleForm}
       >
         Cancel
-      </button>
+      </Button>
     </div>
   );
 };
