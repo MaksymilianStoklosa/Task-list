@@ -1,0 +1,21 @@
+.open-form-button {
+  position: fixed;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  width: 5rem;
+  height: 5rem;
+  outline: none;
+  border-radius: 50px;
+  border: none;
+  background: $color-gold;
+  box-shadow: $box-shadow;
+  transition: all .3s;
+
+  &:hover {
+    background-color: $color-sea;
+  }
+
+  .fa-plus {
+    font-size: 2rem;
+  }
+}
