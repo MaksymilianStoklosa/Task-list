@@ -11,15 +11,18 @@ const TaskForm = ({ toggleForm }) => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
+    const newDate = date.split('-').reverse().join('.');
     setTasks([...tasks, {
       id: tasks.length,
       text,
-      date,
+      date: newDate,
       priority,
       active: true,
     }]);
     toggleForm();
   };
+
+  const currentDate = new Date().toISOString().slice(0, 10);
 
   return (
     <div className="form">
@@ -43,6 +46,7 @@ const TaskForm = ({ toggleForm }) => {
         <input
           className="form__input"
           type="date"
+          min={currentDate}
           onChange={(e) => setDate(e.target.value)}
         />
         <label htmlFor="checkkbox">
