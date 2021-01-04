@@ -1,0 +1,9 @@
+.button {
+  font-family: $font-family;
+  font-weight: $font-weight--bold;
+  background-color: $color-gold;
+  box-shadow: $box-shadow;
+  outline: none;
+  border: none;
+  transition: all .3s;
+}
