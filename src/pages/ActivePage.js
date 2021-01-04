@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import MainTemplate from 'templates/MainTemplate';
 import Header from 'components/Header';
 import TaskForm from 'components/TaskForm';
-import OpenFormButton from 'components/OpenFormButton';
+import Task from 'components/Task';
+import Button from 'components/Button';
 
 const ActivePage = () => {
   const [openForm, setOpenForm] = useState(false);
@@ -18,7 +19,14 @@ const ActivePage = () => {
         description="You have (0) active tasks"
       />
       {openForm ? <TaskForm toggleForm={toggleForm} /> : null}
-      {!openForm ? <OpenFormButton toggleForm={toggleForm} /> : null}
+      {!openForm ? (
+        <Button
+          click={toggleForm}
+          classname="open-form-button"
+        >
+          <i className="fas fa-plus" />
+        </Button>
+      ) : null}
     </MainTemplate>
   );
 };
