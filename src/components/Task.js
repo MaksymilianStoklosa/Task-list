@@ -1,54 +1,60 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { AppContext } from 'context/AppContext';
 import Button from 'components/Button';
 
-const Task = () => {
+const Task = ({
+  id,
+  text,
+  date,
+}) => {
   const { tasks, setTasks } = useContext(AppContext);
 
-  const handleChangeStatus = (id) => {
+  const handleChangeStatus = (number) => {
     const handleTasks = Array.from(tasks);
     handleTasks.forEach((task) => {
-      if (task.id === id) {
+      if (task.id === number) {
         task.active = false;
       }
       setTasks(handleTasks);
     });
   };
 
-  const handleRemove = (id) => {
+  const handleRemove = (number) => {
     let handleTasks = [...tasks];
-    handleTasks = handleTasks.filter((task) => task.id !== id);
+    handleTasks = handleTasks.filter((task) => task.id !== number);
     setTasks(handleTasks);
   };
 
   return (
-    <>
-      {tasks.map((task) => (
-        <div
-          key={task.id}
-          className="task"
+    <div
+      className="task"
+    >
+      <h2 className="task__heading">{`Task ${id + 1}`}</h2>
+      <p className="task__text">{text}</p>
+      <p className="task__date">{`Do before ${date}`}</p>
+      <div className="task__buttons">
+        <Button
+          classname="task__button--done"
+          click={() => handleChangeStatus(id)}
         >
-          <h2 className="task__heading">{`Task ${task.id + 1}`}</h2>
-          <p className="task__text">{task.text}</p>
-          <p className="task__date">{`Do before ${task.date}`}</p>
-          <div className="task__buttons">
-            <Button
-              classname="task__button--done"
-              click={() => handleChangeStatus(task.id)}
-            >
-              Done
-            </Button>
-            <Button
-              classname="task__button--remove"
-              click={() => handleRemove(task.id)}
-            >
-              Remove
-            </Button>
-          </div>
-        </div>
-      ))}
-    </>
+          Done
+        </Button>
+        <Button
+          classname="task__button--remove"
+          click={() => handleRemove(id)}
+        >
+          Remove
+        </Button>
+      </div>
+    </div>
   );
+};
+
+Task.propTypes = {
+  text: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Task;
