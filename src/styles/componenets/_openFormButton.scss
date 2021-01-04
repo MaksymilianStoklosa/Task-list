@@ -1,15 +1,11 @@
-.toggle-button {
+.open-form-button {
   position: fixed;
   right: 2.5rem;
   bottom: 2.5rem;
   width: 5rem;
   height: 5rem;
-  outline: none;
-  border-radius: 50px;
-  border: none;
-  background: $color-gold;
-  box-shadow: $box-shadow;
-  transition: all .3s;
+  border-radius: 5rem;
+
 
   &:hover {
     background-color: $color-sea;

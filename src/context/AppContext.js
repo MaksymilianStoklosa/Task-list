@@ -7,10 +7,10 @@ const AppProvider = ({ children }) => {
   const [tasks, setTasks] = useState([
     {
       id: 0,
-      text: 'Hello',
+      text: 'Veniam pariatur occaecat mollit Lorem laborum in labore ex non aliquip sint cupidatat.',
       date: '12.01.2021',
       priority: false,
-      active: false,
+      active: true,
     },
   ]);
 
