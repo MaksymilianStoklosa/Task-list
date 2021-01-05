@@ -9,9 +9,11 @@ const TaskForm = ({ toggleForm }) => {
   const [date, setDate] = useState('');
   const [priority, setPriority] = useState(false);
 
+  const currentDate = new Date().toISOString().slice(0, 10);
+  const newDate = date.split('-').reverse().join('.');
+
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    const newDate = date.split('-').reverse().join('.');
     setTasks([...tasks, {
       id: tasks.length,
       text,
@@ -22,8 +24,6 @@ const TaskForm = ({ toggleForm }) => {
     toggleForm();
   };
 
-  const currentDate = new Date().toISOString().slice(0, 10);
-
   return (
     <div className="form">
       <h2 className="form__heading">What would you like to add?</h2>
@@ -31,20 +31,22 @@ const TaskForm = ({ toggleForm }) => {
         className="form__fields"
         onSubmit={handleSubmitForm}
       >
-        <p>
+        <label htmlFor="text">
           Enter your task below
-        </p>
+        </label>
         <input
           className="form__input"
+          id="text"
           type="text"
           onChange={(e) => setText(e.target.value)}
           placeholder="Throw out rubbish..."
         />
-        <p>
+        <label htmlFor="date">
           Select a date to complete the task
-        </p>
+        </label>
         <input
           className="form__input"
+          id="date"
           type="date"
           min={currentDate}
           onChange={(e) => setDate(e.target.value)}
