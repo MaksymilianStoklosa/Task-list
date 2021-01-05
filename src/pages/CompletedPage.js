@@ -7,7 +7,9 @@ import { AppContext } from 'context/AppContext';
 
 const CompletedPage = () => {
   const { tasks } = useContext(AppContext);
+
   const tasksStatus = tasks.filter((task) => !task.active);
+
   const completedTasks = tasksStatus.map((task) => (
     <Task
       key={task.id}

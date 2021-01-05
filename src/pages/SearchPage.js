@@ -7,6 +7,7 @@ import { AppContext } from 'context/AppContext';
 
 const SearchPage = () => {
   const { tasks } = useContext(AppContext);
+
   const allTasks = tasks.map((task) => (
     <Task
       key={task.id}
