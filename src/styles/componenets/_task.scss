@@ -17,8 +17,17 @@
     text-align: center;
   }
 
+  .important {
+    color: $color-red;
+  }
+
+  .inactive {
+    color: $color-green;
+  }
+
   &__text {
     display: flex;
+    font-size: 2rem;
     align-items: center;
     margin: 2rem 2rem;
     text-align: justify;
