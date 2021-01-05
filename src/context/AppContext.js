@@ -1,18 +1,15 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 export const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [tasks, setTasks] = useState([
-    {
-      id: 0,
-      text: 'Veniam pariatur occaecat mollit Lorem laborum in labore ex non aliquip sint cupidatat.',
-      date: '12.01.2021',
-      priority: false,
-      active: true,
-    },
-  ]);
+  const tasksFromLocalStorage = JSON.parse(localStorage.getItem('tasks') || '[]');
+  const [tasks, setTasks] = useState(tasksFromLocalStorage);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <AppContext.Provider value={{
