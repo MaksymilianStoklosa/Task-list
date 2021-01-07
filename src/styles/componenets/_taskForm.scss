@@ -28,6 +28,13 @@
     }
   }
 
+  .error {
+    @extend .form__input;
+    transform: scale(1.05);
+    transition: all .3s;
+    border-color: $color-red;
+  }
+
   &__heading {
     color: $color-gold;
     font-size: 3rem;
