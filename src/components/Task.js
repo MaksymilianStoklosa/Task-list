@@ -12,19 +12,18 @@ const Task = ({
 }) => {
   const { tasks, setTasks } = useContext(AppContext);
 
-  const handleChangeStatus = (number) => {
+  const handleChangeStatus = (taskID) => {
     const handleTasks = Array.from(tasks);
     handleTasks.forEach((task) => {
-      if (task.id === number) {
+      if (task.id === taskID) {
         task.active = !task.active;
       }
       setTasks(handleTasks);
     });
   };
 
-  const handleRemove = (number) => {
-    let handleTasks = [...tasks];
-    handleTasks = handleTasks.filter((task) => task.id !== number);
+  const handleRemove = (taskID) => {
+    const handleTasks = [...tasks].filter((task) => task.id !== taskID);
     setTasks(handleTasks);
   };
 
