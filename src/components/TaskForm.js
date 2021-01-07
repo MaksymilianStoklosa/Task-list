@@ -8,20 +8,54 @@ const TaskForm = ({ toggleForm }) => {
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
   const [priority, setPriority] = useState(false);
+  const [textError, setTextError] = useState(false);
+  const [dateError, setDateError] = useState(false);
 
   const currentDate = new Date().toISOString().slice(0, 10);
   const newDate = date.split('-').reverse().join('.');
 
+  const validationForm = () => {
+    let inputText = false;
+    let inputDate = false;
+
+    if (text.length < 1 && text.indexOf(' ') === -1) {
+      setTextError(true);
+      inputText = true;
+    }
+
+    if (date.length < 10) {
+      setDateError(true);
+      inputDate = true;
+    }
+    return {
+      inputText,
+      inputDate,
+    };
+  };
+
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    setTasks([...tasks, {
-      id: tasks.length,
-      text,
-      date: newDate,
-      priority,
-      active: true,
-    }]);
-    toggleForm();
+    const validation = validationForm();
+    if (!validation.inputText && !validation.inputDate) {
+      setTasks([...tasks, {
+        id: tasks.length,
+        text,
+        date: newDate,
+        priority,
+        active: true,
+      }]);
+      toggleForm();
+    }
+  };
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+    setTextError(false);
+  };
+
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+    setDateError(false);
   };
 
   return (
@@ -35,21 +69,21 @@ const TaskForm = ({ toggleForm }) => {
           Enter your task below
         </label>
         <input
-          className="form__input"
+          className={textError ? 'error' : 'form__input'}
           id="text"
           type="text"
-          onChange={(e) => setText(e.target.value)}
+          onChange={handleTextChange}
           placeholder="Throw out rubbish..."
         />
         <label htmlFor="date">
-          Select a date to complete the task
+          Select date to complete the task
         </label>
         <input
-          className="form__input"
+          className={dateError ? 'error' : 'form__input'}
           id="date"
           type="date"
           min={currentDate}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={handleDateChange}
         />
         <label htmlFor="checkkbox">
           <input
