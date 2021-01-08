@@ -35,7 +35,7 @@ const TaskForm = ({ toggleForm }) => {
     const validation = validationForm();
     if (!validation.inputText && !validation.inputDate) {
       setTasks([...tasks, {
-        id: tasks.length,
+        id: Math.floor(Math.random() * 99999),
         text,
         date: date.split('-').reverse().join('.'),
         priority,
