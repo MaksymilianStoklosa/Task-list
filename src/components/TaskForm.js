@@ -11,9 +11,6 @@ const TaskForm = ({ toggleForm }) => {
   const [textError, setTextError] = useState(false);
   const [dateError, setDateError] = useState(false);
 
-  const currentDate = new Date().toISOString().slice(0, 10);
-  const newDate = date.split('-').reverse().join('.');
-
   const validationForm = () => {
     let inputText = false;
     let inputDate = false;
@@ -40,7 +37,7 @@ const TaskForm = ({ toggleForm }) => {
       setTasks([...tasks, {
         id: tasks.length,
         text,
-        date: newDate,
+        date: date.split('-').reverse().join('.'),
         priority,
         active: true,
       }]);
@@ -82,7 +79,9 @@ const TaskForm = ({ toggleForm }) => {
           className={dateError ? 'error' : 'form__input'}
           id="date"
           type="date"
-          min={currentDate}
+          min={
+            new Date().toISOString().slice(0, 10)
+          }
           onChange={handleDateChange}
         />
         <label htmlFor="checkkbox">
