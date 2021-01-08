@@ -13,18 +13,15 @@ const Task = ({
   const { tasks, setTasks } = useContext(AppContext);
 
   const handleChangeStatus = (taskID) => {
-    const handleTasks = Array.from(tasks);
-    handleTasks.forEach((task) => {
-      if (task.id === taskID) {
-        task.active = !task.active;
-      }
-      setTasks(handleTasks);
-    });
+    const findTask = tasks.find((task) => task.id === taskID);
+    findTask.active = !findTask.active;
+    setTasks([...tasks]);
   };
 
   const handleRemove = (taskID) => {
-    const handleTasks = [...tasks].filter((task) => task.id !== taskID);
-    setTasks(handleTasks);
+    setTasks(
+      tasks.filter((task) => task.id !== taskID),
+    );
   };
 
   const important = priority && 'important';
@@ -35,7 +32,7 @@ const Task = ({
       className="task"
     >
       <h2 className={`task__heading ${important} ${inActive}`}>
-        {`Task ${id + 1}`}
+        Let&#39;s do it!
       </h2>
       <p className={`task__text ${inActive}`}>
         {text}
