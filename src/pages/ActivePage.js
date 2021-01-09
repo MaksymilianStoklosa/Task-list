@@ -39,7 +39,7 @@ const ActivePage = () => {
   ));
 
   const toggleForm = () => {
-    setOpenForm((form) => !form);
+    setOpenForm((visible) => !visible);
   };
 
   return (
