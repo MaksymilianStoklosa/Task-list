@@ -1,0 +1,23 @@
+.searchpage {
+  &__input {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: .5rem;
+    top: -20rem;
+    height: 4rem;
+    width: 40rem;
+    font-family: $font-family;
+    font-size: 2rem;
+    transition: transform .5s ease-in-out;
+  }
+
+  &__button {
+    @extend .activepage__button;
+
+    .fas {
+      font-size: 1.8rem;
+    }
+  }
+}
