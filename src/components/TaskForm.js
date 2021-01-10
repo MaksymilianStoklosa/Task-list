@@ -2,9 +2,10 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { AppContext } from 'context/AppContext';
 import Button from 'components/Button';
+import { ACTION } from 'reducer/Reducer';
 
 const TaskForm = ({ toggleForm }) => {
-  const { tasks, setTasks } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
   const [priority, setPriority] = useState(false);
@@ -34,13 +35,14 @@ const TaskForm = ({ toggleForm }) => {
     e.preventDefault();
     const validation = validationForm();
     if (!validation.inputText && !validation.inputDate) {
-      setTasks([...tasks, {
-        id: Math.floor(Math.random() * 99999),
-        text,
-        date: date.split('-').reverse().join('.'),
-        priority,
-        active: true,
-      }]);
+      dispatch({
+        type: ACTION.ADD_TASK,
+        payload: {
+          text,
+          date,
+          priority,
+        },
+      });
       toggleForm();
     }
   };

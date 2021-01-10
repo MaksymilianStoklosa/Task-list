@@ -1,11 +1,14 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { taskReducer } from 'reducer/Reducer';
 
 export const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const tasksFromLocalStorage = JSON.parse(localStorage.getItem('tasks') || '[]');
-  const [tasks, setTasks] = useState(tasksFromLocalStorage);
+  const [tasks, dispatch] = useReducer(taskReducer, [], () => {
+    const localStorageData = localStorage.getItem('tasks');
+    return localStorageData ? JSON.parse(localStorageData) : [];
+  });
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -14,7 +17,7 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider value={{
       tasks,
-      setTasks,
+      dispatch,
     }}
     >
       {children}

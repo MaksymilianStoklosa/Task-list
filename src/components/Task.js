@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { AppContext } from 'context/AppContext';
+import { ACTION } from 'reducer/Reducer';
 import Button from 'components/Button';
 
 const Task = ({
@@ -10,18 +11,24 @@ const Task = ({
   priority,
   active,
 }) => {
-  const { tasks, setTasks } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const handleChangeStatus = (taskID) => {
-    const findTask = tasks.find((task) => task.id === taskID);
-    findTask.active = !findTask.active;
-    setTasks([...tasks]);
+    dispatch({
+      type: ACTION.CHANGE_STATUS,
+      payload: {
+        id: taskID,
+      },
+    });
   };
 
   const handleRemove = (taskID) => {
-    setTasks(
-      tasks.filter((task) => task.id !== taskID),
-    );
+    dispatch({
+      type: ACTION.REMOVE_TASK,
+      payload: {
+        id: taskID,
+      },
+    });
   };
 
   const important = priority && 'important';
